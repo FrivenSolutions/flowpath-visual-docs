@@ -156,6 +156,24 @@ Seoul||KOR</code></pre>
   <p>On the <em>Arrows</em> card, set <strong>Path</strong> to Great circle for true
   shortest-distance routes, including flows crossing the antimeridian.</p>
 
+  <p><strong>They curve, and the curve is real.</strong> A great circle is the shortest route
+  across a sphere, and a flat map cannot show that as a straight line. Every path bends
+  <em>toward the nearer pole</em> — north of the equator it bows north, south of it, south. That
+  is why a flight from New York to Tokyo passes near the Arctic rather than straight across the
+  Pacific.</p>
+
+  <p>The curve can look as though it always leans the same way, but that depends on which
+  direction you are travelling, not on the map. Heading east in the northern hemisphere, north is
+  to your left and the arc appears anticlockwise; heading west, north is to your right and the same
+  arc appears clockwise. A dataset made mostly of eastbound northern routes will look consistently
+  one-handed for that reason alone.</p>
+
+  <p>Two things worth knowing if a path looks wrong. A due north–south route draws perfectly
+  straight, because a meridian already <em>is</em> a great circle. And the bend grows with
+  distance: barely visible across a few hundred miles, unmistakable across an ocean. If you would
+  rather flows read as simple curves between points, use <strong>Arc</strong> mode instead — it
+  looks tidier, but the line it draws is not the route anything actually takes.</p>
+
   <h3>Multi-hop routes</h3>
   <p>Bind <strong>Route ID</strong> and rows sharing a value chain into one continuous arrow through
   its waypoints. One row per leg:</p>

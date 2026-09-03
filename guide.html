@@ -222,7 +222,8 @@ Seoul||KOR</code></pre>
   <p>Bind <strong>Destination Thickness</strong> as well as Origin Thickness and each arrow is drawn
   between its two values — narrowing where a flow loses something on the way, widening where it
   gains. Shrinkage, spoilage, consumption and packet loss all read directly off the shape.</p>
-  <p>The tooltip carries the exact figures: the value on arrival, and the change as a percentage.
+  <p>The tooltip carries the exact figures: the arrival value, named after whichever measure you
+  bound, and the change as a percentage.
   Worth relying on, because <strong>line width is a coarse channel</strong>. A 40% loss is obvious
   at a glance; a 3% one is not, and no formatting will make it so. The taper tells you which lanes
   to look at, and the tooltip tells you by how much.</p>
@@ -247,13 +248,16 @@ Seoul||KOR</code></pre>
   distinguishable by colour — the legend still lists them, but the arrows no longer match it. Worth
   it while hunting for leaks; switch back afterwards.</p>
   <p>Three scales. <em>Green to red</em> is the default because it is the convention everyone
-  already reads. It is also the one pair that red-green colour blindness cannot separate, which is
-  why <em>Blue to orange</em> sits beside it — the same reading, legible to everyone. <em>Custom</em>
-  takes both endpoint colours from you.</p>
-  <p>A flow that <em>grows</em> in transit stays on the healthy colour rather than running off the
-  other end of the scale; the tooltip still reports the gain. And the gradient follows the straight
-  line between the two ends rather than the curve itself, so at high curve intensity a colour sits
-  slightly ahead of where its value really is along the path.</p>
+  already reads — green unchanged, red losing, blue gaining. It is also the one pair that red-green
+  colour blindness cannot separate, which is why <em>Blue to orange</em> sits beside it: blue
+  unchanged, orange losing, purple gaining, legible to everyone. <em>Custom</em> takes all three
+  colours from you.</p>
+  <p>The scale runs in <strong>both directions</strong> from the middle. A flow arriving with what
+  it left with is the healthy colour; one that loses moves toward the loss colour, one that gains
+  moves toward a third. Gains saturate at the same magnitude losses do, so with the floor at 50%,
+  losing half and gaining half sit equally far from the middle.</p>
+  <p>The gradient follows the straight line between the two ends rather than the curve itself, so at
+  high curve intensity a colour sits slightly ahead of where its value really is along the path.</p>
 
   <h3>Directional highlighting</h3>
   <p>Turn on <strong>Split inbound and outbound on select</strong> on the <em>Arrows</em> card, then
@@ -264,6 +268,8 @@ Seoul||KOR</code></pre>
   stays readable at any density, and survives colour-blindness and monochrome printing.</p>
   <p>Clicking an arrow rather than a bubble dims as it always did — there is no location for a flow
   to be inbound or outbound of.</p>
+  <p>The legend, and clicking an arrow, cross-filter the same way they always have too — the split
+  is specifically what clicking a <strong>bubble</strong> does.</p>
 
   <h3>Play-axis filtering</h3>
   <p>With the timeline on, turn on <strong>Filter the page to the current step</strong> on the

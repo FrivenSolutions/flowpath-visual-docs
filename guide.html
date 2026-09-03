@@ -24,12 +24,12 @@
       without it every arrow is the same weight.</td></tr>
     <tr><td>Destination Thickness</td><td>Optional, licensed. What the flow is worth when it
       arrives, so the arrow can narrow or widen along its length — see
-      <a href="#decay">Divergent widths</a>.</td></tr>
+      <a href="#decay">Divergent path widths</a>.</td></tr>
   </table>
 
   <p>Add <strong>Origin</strong> and <strong>Destination</strong> as text fields to get place names
   in tooltips and for screen readers; without them the visual falls back to showing raw coordinates.
-  Add <strong>Legend</strong> to colour flows by category, and <strong>Tooltips</strong> for any
+  Add <strong>Legend</strong> to color flows by category, and <strong>Tooltips</strong> for any
   extra fields you want on hover.</p>
 
   <p>Rows sharing an origin, destination and legend category are combined into one arrow, with their
@@ -61,7 +61,7 @@ London|ON|CAN
 Seoul||KOR</code></pre>
 
   <p>Separate the fields with a <strong>pipe</strong> (<code>|</code>). Spaces around the
-  separators don't matter, and neither does capitalisation.</p>
+  separators don't matter, and neither does capitalization.</p>
 
   <p><strong>Latitude and longitude always win.</strong> If a row has both coordinates and a
   location, the coordinates are used. You can mix the two in one dataset — the location column
@@ -76,14 +76,14 @@ Seoul||KOR</code></pre>
   <p>These land on the same spot the map already labels that country or state at, and the
   tooltip marks them as a country or area rather than a city.</p>
 
-  <h3>If your state or province isn't recognised</h3>
+  <h3>If your state or province isn't recognized</h3>
   <p>The reference data holds one administrative level per country, and it isn't always the one
   you have. Belgium is stored by region (Flanders, Wallonia) rather than by province, so
   <code>Herstal|Liege|BEL</code> names a real province that simply isn't in the data.</p>
   <p>Rather than dropping the row, the visual ignores the part it can't use and matches on city
   and country alone — but <strong>only when that gives exactly one answer</strong>. The tooltip
   then shows what was actually matched, so <code>Herstal|Liege|BEL</code> reads back as
-  <em>Herstal, Wallonia, BE</em>. A state that <em>is</em> recognised but wrong still fails:
+  <em>Herstal, Wallonia, BE</em>. A state that <em>is</em> recognized but wrong still fails:
   <code>Denver|TX|USA</code> is refused, because Denver is not in Texas.</p>
 
   <h3>When rows don't appear</h3>
@@ -101,7 +101,7 @@ Seoul||KOR</code></pre>
 
   <p>For the second case there is a switch on the <em>Locations</em> card,
   <strong>Approximate unknown cities</strong>. With it on, a city that isn't in the reference
-  data is drawn at the centre of its state or province instead of being left out, and the
+  data is drawn at the center of its state or province instead of being left out, and the
   tooltip says so. It needs a state to work — there is nothing to approximate to without one.</p>
   <p>It is off by default deliberately. An arrow to the middle of Pennsylvania looks exactly as
   precise as an arrow to a real town, and only the tooltip distinguishes them. Turn it on when
@@ -125,29 +125,29 @@ Seoul||KOR</code></pre>
     <tr><td>Taper</td><td>Full width at the origin, narrowing toward the destination</td><td>The taper itself</td></tr>
     <tr><td>Line</td><td>Constant width end to end</td><td>No direction cue</td></tr>
   </table>
-  <p>Also here: colour, minimum and maximum thickness in pixels, opacity, and curve intensity. Curve
+  <p>Also here: color, minimum and maximum thickness in pixels, opacity, and curve intensity. Curve
   intensity is what separates an A-to-B flow from its B-to-A counterpart — at zero they lie on top of
   each other. Flows running the <em>same</em> way between the same two places are fanned apart
   automatically and stay separated whatever this is set to.</p>
 
   <h2>Bubbles</h2>
-  <p>Markers at each end. Origins and destinations get their own colour, shape and size — circle,
+  <p>Markers at each end. Origins and destinations get their own color, shape and size — circle,
   square, star, pin or teardrop.</p>
   <p><strong>Combine shared locations</strong> is on by default and matters more than it sounds. A
   hub is usually both an origin and a destination, and drawing it as two circles on identical
   coordinates is indistinguishable from one circle — hiding the fact that it is a hub. Combined, such
-  a place renders as a single marker split into wedges: origin colour for outbound, destination
-  colour for inbound, sized by its total throughput.</p>
+  a place renders as a single marker split into wedges: origin color for outbound, destination
+  color for inbound, sized by its total throughput.</p>
   <p>Bind <strong>Origin Size</strong> or <strong>Destination Size</strong> to size markers from
   data. The size control then becomes the <em>maximum</em> radius and a minimum appears; markers
   scale on a square-root scale, so area rather than radius tracks the measure.</p>
 
   <h2>Basemap and labels</h2>
   <p>Land, country borders, US state borders, US county borders (off by default — three thousand
-  polygons is a lot of ink), oceans and lakes, each with their own colours.</p>
+  polygons is a lot of ink), oceans and lakes, each with their own colors.</p>
   <p><strong>Center longitude</strong> picks the meridian in the middle of the world, which is the
-  same as choosing where the map is cut. Leave it at 0 for a Greenwich-centred map; set 180 for a
-  Pacific-centred one.</p>
+  same as choosing where the map is cut. Leave it at 0 for a Greenwich-centered map; set 180 for a
+  Pacific-centered one.</p>
   <p>Country, US state and city labels are each independently switchable, with their own text size,
   bold, italic and underline. <strong>Density</strong> controls how much clearance each label claims:
   zoomed out, a crowded region only has room for its most significant names; zoom in and more fit.</p>
@@ -158,8 +158,8 @@ Seoul||KOR</code></pre>
   both bounded by the map, so you cannot shrink it into a corner or drag off into empty space.</p>
 
   <h2 id="licensed">Licensed features</h2>
-  <p>A single licence unlocks all of the following. They render in full so you can evaluate them; a
-  watermark appears if you publish a report using them without a licence.</p>
+  <p>A single license unlocks all of the following. They render in full so you can evaluate them; a
+  watermark appears if you publish a report using them without a license.</p>
 
   <h3>Great circle paths</h3>
   <p>On the <em>Arrows</em> card, set <strong>Path</strong> to Great circle for true
@@ -172,8 +172,8 @@ Seoul||KOR</code></pre>
   Pacific.</p>
 
   <p>The curve can look as though it always leans the same way, but that depends on which
-  direction you are travelling, not on the map. Heading east in the northern hemisphere, north is
-  to your left and the arc appears anticlockwise; heading west, north is to your right and the same
+  direction you are traveling, not on the map. Heading east in the northern hemisphere, north is
+  to your left and the arc appears counterclockwise; heading west, north is to your right and the same
   arc appears clockwise. A dataset made mostly of eastbound northern routes will look consistently
   one-handed for that reason alone.</p>
 
@@ -199,9 +199,9 @@ Seoul||KOR</code></pre>
   Chicago to Denver, happens to match a plain flow somewhere else in your data, that one leg is
   fanned apart from it — the rest of the route is unaffected, and stays on the curve you set.</p>
 
-  <h3>Animation</h3>
-  <p>Dots travelling along each flow, showing direction as motion. Speed is in screen pixels per
-  second, so the pace holds steady as you zoom. Honours the system reduced-motion setting: the dots
+  <h3>Flow animation</h3>
+  <p>Dots traveling along each flow, showing direction as motion. Speed is in screen pixels per
+  second, so the pace holds steady as you zoom. Honors the system reduced-motion setting: the dots
   are placed once and left still.</p>
 
   <h3>Timeline playback</h3>
@@ -221,7 +221,7 @@ Seoul||KOR</code></pre>
   accumulate.</p>
   <p>Switching the timeline off shows the whole period at once, with values summed.</p>
 
-  <h3 id="decay">Divergent widths</h3>
+  <h3 id="decay">Divergent path widths</h3>
   <p>Bind <strong>Destination Thickness</strong> as well as Origin Thickness and each arrow is drawn
   between its two values — narrowing where a flow loses something on the way, widening where it
   gains. Shrinkage, spoilage, consumption and packet loss all read directly off the shape.</p>
@@ -236,45 +236,45 @@ Seoul||KOR</code></pre>
   <p>Leave it unbound, or bind it to the same measure as Origin Thickness, and arrows keep one
   width end to end — no watermark, because that is exactly what an unlicensed report draws.</p>
 
-  <h4>Colouring by value change</h4>
+  <h4>Coloring by value change</h4>
   <p>Width alone only tells you which lanes to look at. To read the <em>rate</em> of loss, set
   <strong>Color by</strong> to <em>Value change</em> on the <em>Arrows</em> card. Each flow is then
-  drawn as a gradient: healthy at the origin, shifting toward the loss colour by however much it
-  gives up on the way. A flow that loses nothing stays one flat colour, so only the leaks draw the
+  drawn as a gradient: healthy at the origin, shifting toward the loss color by however much it
+  gives up on the way. A flow that loses nothing stays one flat color, so only the leaks draw the
   eye.</p>
   <p><strong>Full loss color at (% retained)</strong> sets where the scale bottoms out — at the default of 50%,
   a lane arriving with half what it left with is fully saturated. Lower it if your losses are
   smaller than that and everything looks healthy; a network whose worst lane leaks 8% needs a floor
   near 90% before the scale says anything.</p>
-  <p class="note"><strong>This replaces category colour, it does not add to it.</strong> Colour can
+  <p class="note"><strong>This replaces category color, it does not add to it.</strong> Color can
   carry one variable, so switching to Value change means your Legend categories stop being
-  distinguishable by colour — the legend still lists them, but the arrows no longer match it. Worth
+  distinguishable by color — the legend still lists them, but the arrows no longer match it. Worth
   it while hunting for leaks; switch back afterwards.</p>
   <p>Three scales. <em>Green to red</em> is the default because it is the convention everyone
   already reads — green unchanged, red losing, blue gaining. It is also the one pair that red-green
-  colour blindness cannot separate, which is why <em>Blue to orange</em> sits beside it: blue
+  color blindness cannot separate, which is why <em>Blue to orange</em> sits beside it: blue
   unchanged, orange losing, purple gaining, legible to everyone. <em>Custom</em> takes all three
-  colours from you.</p>
+  colors from you.</p>
   <p>The scale runs in <strong>both directions</strong> from the middle. A flow arriving with what
-  it left with is the healthy colour; one that loses moves toward the loss colour, one that gains
+  it left with is the healthy color; one that loses moves toward the loss color, one that gains
   moves toward a third. Gains saturate at the same magnitude losses do, so with the floor at 50%,
   losing half and gaining half sit equally far from the middle.</p>
   <p>The gradient follows the straight line between the two ends rather than the curve itself, so at
-  high curve intensity a colour sits slightly ahead of where its value really is along the path.</p>
+  high curve intensity a color sits slightly ahead of where its value really is along the path.</p>
 
   <h3>Directional highlighting</h3>
   <p>Turn on <strong>Split inbound and outbound on select</strong> on the <em>Arrows</em> card, then
   click a bubble. That location&rsquo;s outbound flows stay solid, its inbound flows become dashed
   outlines, and everything else fades well back.</p>
-  <p>Direction is carried by <em>shape</em> rather than colour, which is the point: on a busy hub,
+  <p>Direction is carried by <em>shape</em> rather than color, which is the point: on a busy hub,
   arrowheads all land within a few pixels of each other and overlap into noise. A solid/dashed split
-  stays readable at any density, and survives colour-blindness and monochrome printing.</p>
-  <p>Clicking an arrow rather than a bubble dims as it always did — there is no location for a flow
-  to be inbound or outbound of.</p>
-  <p>The legend, and clicking an arrow, cross-filter the same way they always have too — the split
-  is specifically what clicking a <strong>bubble</strong> does.</p>
+  stays readable at any density, and survives color-blindness and monochrome printing.</p>
+  <p>The split is specifically what clicking a <strong>bubble</strong> does. Clicking an arrow dims
+  as it always did — there is no location for a single flow to be inbound or outbound <em>of</em> —
+  and clicking a legend entry cross-filters that whole category, which is a set of flows rather than
+  a place.</p>
 
-  <h3>Play-axis filtering</h3>
+  <h3>Play-axis page filtering</h3>
   <p>With the timeline on, turn on <strong>Filter the page to the current step</strong> on the
   <em>Timeline</em> card. The rest of the report page then follows the map: a bar chart beside it
   describes the same interval the map is drawing.</p>

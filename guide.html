@@ -13,15 +13,18 @@
 
   <h2>Getting started</h2>
   <p>You need somewhere for each flow to start and somewhere for it to end. Everything else,
-  including <strong>Arrow Thickness</strong>, is optional.</p>
+  including <strong>Origin Thickness</strong>, is optional.</p>
   <table>
     <tr><th>Field</th><th>What it does</th></tr>
     <tr><td>Origin Latitude<br>Origin Longitude</td><td>Where each flow starts. Numeric.</td></tr>
     <tr><td>Destination Latitude<br>Destination Longitude</td><td>Where it ends. Numeric.</td></tr>
     <tr><td>Origin Location<br>Destination Location</td><td>Place names instead of coordinates —
       see <a href="#locations">below</a>. Use these <em>or</em> the latitude/longitude pairs.</td></tr>
-    <tr><td>Arrow Thickness</td><td>Optional. The measure driving how thick each arrow is drawn;
+    <tr><td>Origin Thickness</td><td>Optional. The measure driving how thick each arrow is drawn;
       without it every arrow is the same weight.</td></tr>
+    <tr><td>Destination Thickness</td><td>Optional, licensed. What the flow is worth when it
+      arrives, so the arrow can narrow or widen along its length — see
+      <a href="#decay">Divergent widths</a>.</td></tr>
   </table>
 
   <p>Add <strong>Origin</strong> and <strong>Destination</strong> as text fields to get place names
@@ -31,6 +34,11 @@
 
   <p>Rows sharing an origin, destination and legend category are combined into one arrow, with their
   values summed.</p>
+
+  <p>Flows that share a route but <em>not</em> a category — the same lane served by both air and
+  ocean, say — are separate arrows, and are automatically fanned apart so each one is visible.
+  Without that they would be drawn on identical pixels and all but one would be hidden. Nothing to
+  turn on; a lane with only one flow is unaffected.</p>
 
   <h2 id="locations">Using place names instead of coordinates</h2>
   <p>If you don't have latitude and longitude, bind <strong>Origin Location</strong> and
@@ -119,7 +127,8 @@ Seoul||KOR</code></pre>
   </table>
   <p>Also here: colour, minimum and maximum thickness in pixels, opacity, and curve intensity. Curve
   intensity is what separates an A-to-B flow from its B-to-A counterpart — at zero they lie on top of
-  each other.</p>
+  each other. Flows running the <em>same</em> way between the same two places are fanned apart
+  automatically and stay separated whatever this is set to.</p>
 
   <h2>Bubbles</h2>
   <p>Markers at each end. Origins and destinations get their own colour, shape and size — circle,
@@ -208,6 +217,45 @@ Seoul||KOR</code></pre>
   <em>Cumulative</em> builds up everything that has started so far, with arrows thickening as they
   accumulate.</p>
   <p>Switching the timeline off shows the whole period at once, with values summed.</p>
+
+  <h3 id="decay">Divergent widths</h3>
+  <p>Bind <strong>Destination Thickness</strong> as well as Origin Thickness and each arrow is drawn
+  between its two values — narrowing where a flow loses something on the way, widening where it
+  gains. Shrinkage, spoilage, consumption and packet loss all read directly off the shape.</p>
+  <p>The tooltip carries the exact figures: the value on arrival, and the change as a percentage.
+  Worth relying on, because <strong>line width is a coarse channel</strong>. A 40% loss is obvious
+  at a glance; a 3% one is not, and no formatting will make it so. The taper tells you which lanes
+  to look at, and the tooltip tells you by how much.</p>
+  <p>Bound data overrides the <em>Style</em> setting: a flow carrying a real decay tapers even in
+  Line style, and its taper reflects the measure rather than the cosmetic Taper option. In
+  Directional style the arrowhead scales to the arriving width.</p>
+  <p>Leave it unbound, or bind it to the same measure as Origin Thickness, and arrows keep one
+  width end to end — no watermark, because that is exactly what an unlicensed report draws.</p>
+
+  <h3>Directional highlighting</h3>
+  <p>Turn on <strong>Split inbound and outbound on select</strong> on the <em>Arrows</em> card, then
+  click a bubble. That location&rsquo;s outbound flows stay solid, its inbound flows become dashed
+  outlines, and everything else fades well back.</p>
+  <p>Direction is carried by <em>shape</em> rather than colour, which is the point: on a busy hub,
+  arrowheads all land within a few pixels of each other and overlap into noise. A solid/dashed split
+  stays readable at any density, and survives colour-blindness and monochrome printing.</p>
+  <p>Clicking an arrow rather than a bubble dims as it always did — there is no location for a flow
+  to be inbound or outbound of.</p>
+
+  <h3>Play-axis filtering</h3>
+  <p>With the timeline on, turn on <strong>Filter the page to the current step</strong> on the
+  <em>Timeline</em> card. The rest of the report page then follows the map: a bar chart beside it
+  describes the same interval the map is drawing.</p>
+  <p class="note"><strong>It syncs when playback settles, not on every frame.</strong> Pausing or
+  dragging the scrubber updates the page; playing does not. This is deliberate. Every filter makes
+  every visual on the page re-query, so doing it at playback speed would refresh the whole report
+  several times a second — and nothing beside the map is readable while it redraws that fast
+  anyway.</p>
+  <p class="note">Needs <strong>Start Time</strong> bound to a date column, not to a date hierarchy.
+  A hierarchy arrives as four separate columns, and filtering the page by one of them would filter
+  by day-of-month while the map stepped by date; rather than guess, the visual leaves the page
+  alone. Use the dropdown on the field well to pick the date field itself. The map still animates
+  either way.</p>
 
   <h3>More than 50 flows</h3>
   <p>A flow is one lane or one route. A four-leg route counts once, and a lane recorded monthly

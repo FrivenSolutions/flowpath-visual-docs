@@ -232,6 +232,29 @@ Seoul||KOR</code></pre>
   <p>Leave it unbound, or bind it to the same measure as Origin Thickness, and arrows keep one
   width end to end — no watermark, because that is exactly what an unlicensed report draws.</p>
 
+  <h4>Colouring by value change</h4>
+  <p>Width alone only tells you which lanes to look at. To read the <em>rate</em> of loss, set
+  <strong>Color by</strong> to <em>Value change</em> on the <em>Arrows</em> card. Each flow is then
+  drawn as a gradient: healthy at the origin, shifting toward the loss colour by however much it
+  gives up on the way. A flow that loses nothing stays one flat colour, so only the leaks draw the
+  eye.</p>
+  <p><strong>Full loss color at (% retained)</strong> sets where the scale bottoms out — at the default of 50%,
+  a lane arriving with half what it left with is fully saturated. Lower it if your losses are
+  smaller than that and everything looks healthy; a network whose worst lane leaks 8% needs a floor
+  near 90% before the scale says anything.</p>
+  <p class="note"><strong>This replaces category colour, it does not add to it.</strong> Colour can
+  carry one variable, so switching to Value change means your Legend categories stop being
+  distinguishable by colour — the legend still lists them, but the arrows no longer match it. Worth
+  it while hunting for leaks; switch back afterwards.</p>
+  <p>Three scales. <em>Green to red</em> is the default because it is the convention everyone
+  already reads. It is also the one pair that red-green colour blindness cannot separate, which is
+  why <em>Blue to orange</em> sits beside it — the same reading, legible to everyone. <em>Custom</em>
+  takes both endpoint colours from you.</p>
+  <p>A flow that <em>grows</em> in transit stays on the healthy colour rather than running off the
+  other end of the scale; the tooltip still reports the gain. And the gradient follows the straight
+  line between the two ends rather than the curve itself, so at high curve intensity a colour sits
+  slightly ahead of where its value really is along the path.</p>
+
   <h3>Directional highlighting</h3>
   <p>Turn on <strong>Split inbound and outbound on select</strong> on the <em>Arrows</em> card, then
   click a bubble. That location&rsquo;s outbound flows stay solid, its inbound flows become dashed

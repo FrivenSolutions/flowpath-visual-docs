@@ -195,6 +195,9 @@ Seoul||KOR</code></pre>
   <p><strong>Leg Order</strong> sequences the hops so the table need not be sorted. A route's
   thickness is the largest value across its legs, not the sum — the rows above describe one shipment
   of 500, not 1,500. Waypoints render as combined markers automatically.</p>
+  <p>The automatic fan described above works leg by leg, not route by route. If R-100's first hop,
+  Chicago to Denver, happens to match a plain flow somewhere else in your data, that one leg is
+  fanned apart from it — the rest of the route is unaffected, and stays on the curve you set.</p>
 
   <h3>Animation</h3>
   <p>Dots travelling along each flow, showing direction as motion. Speed is in screen pixels per

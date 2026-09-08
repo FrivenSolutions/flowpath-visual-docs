@@ -54,7 +54,10 @@ from outside - which is exactly what a rebuild needs.
    `OriginLocation` -> Origin Location and `DestLocation` -> Destination Location, with no
    coordinates bound. This is the only way a reviewer sees that the visual resolves names offline,
    and nine of those rows fail on purpose, so the unresolved-rows notice shows up with it.
-6. Save, and run the check again.
+6. **Rename the banner.** Each page carries a text box reading *Flow Map by Friven*, which is
+   also what the four images in `screenshots/` show - they are on the public site and in the
+   listing. Retake them once the banner says **FlowPath by Friven**.
+7. Save, and run the check again.
 
 The four existing pages and their settings, for reference - they are worth preserving:
 

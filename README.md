@@ -1,6 +1,6 @@
-# Flow Map by Friven — documentation site
+# FlowPath by Friven — documentation site
 
-The public site for the **Flow Map by Friven** Power BI custom visual: user guide, privacy policy, and terms
+The public site for the **FlowPath by Friven** Power BI custom visual: user guide, privacy policy, and terms
 of use. Served by GitHub Pages at
 <https://frivensolutions.github.io/flow-map-visual-docs/>.
 

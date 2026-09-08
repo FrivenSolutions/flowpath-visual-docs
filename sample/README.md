@@ -1,6 +1,6 @@
 # Sample report
 
-`flow-map-sample.pbix` — the report Microsoft asks for with a Power BI visual submission, and
+`flowpath-sample.pbix` — the report Microsoft asks for with a Power BI visual submission, and
 the one linked from the user guide.
 
 It must work with no network access: import the data rather than linking to a source, so the
@@ -41,7 +41,7 @@ Power BI Desktop is the only thing that can write this file. The report definiti
 editable JSON, but the semantic model is a compiled binary part, so a column cannot be added to it
 from outside - which is exactly what a rebuild needs.
 
-1. Open `flow-map-sample.pbix` in Desktop.
+1. Open `flowpath-sample.pbix` in Desktop.
 2. **Import the current visual.** Format pane -> Get more visuals -> Import a visual from a file,
    and pick the `.pbiviz` from the visual repository's `dist/`. Importing over the existing one
    keeps every field binding and format setting; deleting the visual first would lose them for

@@ -2,17 +2,17 @@
 
 The public site for the **FlowPath by Friven** Power BI custom visual: user guide, privacy policy, and terms
 of use. Served by GitHub Pages at
-<https://frivensolutions.github.io/flow-map-visual-docs/>.
+<https://frivensolutions.github.io/flowpath-visual-docs/>.
 
 This repository holds no source code. The visual itself lives in a separate, private repository —
 its source is shared with Microsoft's certification reviewers, who require access to it, but is not
-published. See the [terms of use](https://frivensolutions.github.io/flow-map-visual-docs/terms.html).
+published. See the [terms of use](https://frivensolutions.github.io/flowpath-visual-docs/terms.html).
 
 The split exists because AppSource requires publicly reachable URLs for the privacy policy, help
 documentation and support, and GitHub Pages only serves public repositories on the free tier.
 
 **Support runs to support@friven.dev**, not through this repository's issues — see
-[the support page](https://frivensolutions.github.io/flow-map-visual-docs/support.html).
+[the support page](https://frivensolutions.github.io/flowpath-visual-docs/support.html).
 
 ## Files
 

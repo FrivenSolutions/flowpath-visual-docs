@@ -54,10 +54,11 @@ from outside - which is exactly what a rebuild needs.
    `OriginLocation` -> Origin Location and `DestLocation` -> Destination Location, with no
    coordinates bound. This is the only way a reviewer sees that the visual resolves names offline,
    and nine of those rows fail on purpose, so the unresolved-rows notice shows up with it.
-6. **Rename the banner.** Each page carries a text box reading *Flow Map by Friven*, which is
-   also what the four images in `screenshots/` show - they are on the public site and in the
-   listing. Retake them once the banner says **FlowPath by Friven**.
-7. Save, and run the check again.
+6. **Put something on the page for the map to filter.** A table beside the map on at least one
+   page - Origin, Destination and the thickness measure is enough. See below: this is what the
+   first certification pass failed on.
+7. **Add the hints and tips text box.** Copy below. Certification asks for it by name.
+8. Save, and run the check again.
 
 The four existing pages and their settings, for reference - they are worth preserving:
 
@@ -67,6 +68,39 @@ The four existing pages and their settings, for reference - they are worth prese
 | Animation and Timeline | Animation on, custom water color, legend on top |
 | Great Circle - Latitude Change | Great-circle paths, cumulative timeline, centered on -120 |
 | Zoom | The same settings, zoomed in |
+
+## What certification asked for
+
+The first submission passed with two soft failures, both about this file rather than the visual:
+
+> **1180.2.2.3 Core Functions - Filter Out.** Your visual does not appear to filter outwards to
+> other visuals.
+
+True of the report, not of the code. Every page held the map and nothing else, so a reviewer
+clicking an arrow saw nothing change. The visual calls `selectionManager.select()` on both arrows
+and markers and declares `supportsMultiVisualSelection`; it has nothing to filter here. **One table
+on one page fixes it** - though putting one on every page is better, since a reviewer may open any
+of them.
+
+> **1180.2.3.1 Sample File Hints and Tips.** We recommend including hints and tips on how to use
+> the visual within your sample file.
+
+A text box carries them. Paste this on the first page:
+
+```
+How to use FlowPath
+
+- Click an arrow or a bubble to cross-filter the rest of the page. Ctrl+click adds to the
+  selection; click empty space to clear it.
+- Hover any arrow for origin, destination, volume and category.
+- Bind Latitude and Longitude at each end, or a single City|State|Country column - place names
+  resolve inside the visual, with no geocoding service called.
+- Route ID and Leg Order chain legs into one multi-hop route rather than three separate arrows.
+- Start Time drives the timeline. Press play, or drag the scrubber to filter the whole page.
+- Rows that cannot be located are counted at the bottom left - hover for the reason.
+```
+
+`verify-pbix.mjs` now checks for both, so neither can be lost in a later rebuild.
 
 ## Checking it afterwards
 

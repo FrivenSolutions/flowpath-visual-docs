@@ -274,21 +274,6 @@ Seoul||KOR</code></pre>
   and clicking a legend entry cross-filters that whole category, which is a set of flows rather than
   a place.</p>
 
-  <h3>Play-axis page filtering</h3>
-  <p>With the timeline on, turn on <strong>Filter the page to the current step</strong> on the
-  <em>Timeline</em> card. The rest of the report page then follows the map: a bar chart beside it
-  describes the same interval the map is drawing.</p>
-  <p class="note"><strong>It syncs when playback settles, not on every frame.</strong> Pausing or
-  dragging the scrubber updates the page; playing does not. This is deliberate. Every filter makes
-  every visual on the page re-query, so doing it at playback speed would refresh the whole report
-  several times a second — and nothing beside the map is readable while it redraws that fast
-  anyway.</p>
-  <p class="note">Needs <strong>Start Time</strong> bound to a date column, not to a date hierarchy.
-  A hierarchy arrives as four separate columns, and filtering the page by one of them would filter
-  by day-of-month while the map stepped by date; rather than guess, the visual leaves the page
-  alone. Use the dropdown on the field well to pick the date field itself. The map still animates
-  either way.</p>
-
   <h3>More than 20 flows</h3>
   <p>A flow is one lane or one route. A four-leg route counts once, and a lane recorded monthly
   counts once — the limit measures the picture, not the row count of your model.</p>

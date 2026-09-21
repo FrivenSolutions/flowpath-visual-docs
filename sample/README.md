@@ -100,7 +100,42 @@ How to use FlowPath
 - Rows that cannot be located are counted at the bottom left - hover for the reason.
 ```
 
-`verify-pbix.mjs` now checks for both, so neither can be lost in a later rebuild.
+**The text box alone did not satisfy it.** 1180.2.3.1 came back a second time against a report
+that had one on the first page. Microsoft's own checklist for the sample file says what they look
+for: *"a 'hints' page at the end with some tips and tricks and things to avoid."* A page, named for
+it, last - and with a "things to avoid" section, which is the part a how-to text box does not have.
+
+Add a fifth page called **Hints**, after Great Circle, holding one text box:
+
+```
+Hints
+
+TIPS
+- Bind Latitude and Longitude at each end, or one City|State|Country column. Where both are bound, coordinates win.
+- Click an arrow or a location to filter the rest of the page. Ctrl+click adds to the selection; click empty space to clear it.
+- Hover any arrow for origin, destination, volume and category.
+- Route ID and Leg Order chain legs into one multi-hop route. Start Time turns on the timeline.
+- Destination Thickness draws a lane between its two widths, colored by what it gained or lost in transit.
+
+TRICKS
+- Click a legend entry to select every flow in that category at once.
+- Turn on "Split inbound and outbound on select" on the Arrows card, then click a hub: inbound traffic redraws as a dashed centerline, outbound keeps its body.
+- Switch Path mode to Great circle for lanes that cross the dateline. They stop doubling back across the whole map.
+- Set Center longitude on the Basemap card to put your region in the middle instead of the Atlantic.
+- Right-click an arrow for Include or Exclude. That filters this visual only, not the page.
+
+THINGS TO AVOID
+- A date hierarchy in Start Time. It arrives as four separate columns and the timeline cannot use it. Use the dropdown on the field well to pick the date field itself.
+- A place name without enough to pin it down. "Springfield" alone is refused rather than guessed; "Springfield|IL|USA" resolves. The notice at the bottom left names each row that could not be placed.
+- More than 10,000 rows. Power BI stops sending at that point and the map says "Showing part of the data". Aggregate in the model first.
+- Summing a measure that should not be summed. Bubble sizes add up across every flow at a location, so set a field like population to Max in the field well.
+- Expecting a location column to override coordinates. It never does. Clear the coordinate fields to use names.
+
+Watermarked features are licensed. They render in full before purchase so you can evaluate them.
+```
+
+`verify-pbix.mjs` checks for all of it - a second visual, a text box, and a hints page last - so
+none can be lost in a later rebuild.
 
 ## Checking it afterwards
 

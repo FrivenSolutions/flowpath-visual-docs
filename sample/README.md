@@ -10,8 +10,8 @@ The data it is built from lives in the visual's own repository:
 
 | File | Purpose |
 |---|---|
-| `sample-data.csv` | 61 rows of coordinate-based flows, including 4 multi-leg routes and 9 carrying a transit loss |
-| `sample-data-locations.csv` | 48 rows using the `City\|State\|Country` fields, 9 deliberately unresolvable |
+| `sample-data.csv` | 66 rows: 61 flows with **both** coordinates and `City\|State\|Country` names, 4 multi-leg routes, 9 carrying a transit loss, and 5 rows that cannot be placed on purpose. The one table the report needs |
+| `sample-data-locations.csv` | 48 rows using place names only, 9 deliberately unresolvable. For the geocoding test plan, not the report |
 | `sample-data-large.csv` | 403 rows, for exercising the free-tier flow cap |
 
 All three carry a `DestThickness` column.
@@ -47,13 +47,15 @@ from outside - which is exactly what a rebuild needs.
    keeps every field binding and format setting; deleting the visual first would lose them for
    nothing.
 3. **Repoint the data.** Transform data -> the `sample-data` query -> Source, and point it at the
-   current `sample-data.csv`. `DestThickness` arrives with it. Close & Apply.
+   current `sample-data.csv`. `DestThickness`, `OriginLocation` and `DestLocation` arrive with it.
+   Close & Apply.
 4. **Bind Destination Thickness** to `DestThickness` on the Basic Flow Map and Great Circle pages.
    The automatic fan needs no binding at all and appears on its own once the multi-leg rows are in.
-5. **Add a place-names page.** Load `sample-data-locations.csv` as a second table and bind
-   `OriginLocation` -> Origin Location and `DestLocation` -> Destination Location, with no
-   coordinates bound. This is the only way a reviewer sees that the visual resolves names offline,
-   and nine of those rows fail on purpose, so the unresolved-rows notice shows up with it.
+5. **Add a place-names page** from the same table: bind `OriginLocation` -> Origin Location and
+   `DestLocation` -> Destination Location, and **no coordinates** - coordinates win wherever they are
+   bound, and the page exists to show names resolving without them. It draws the same map as the
+   coordinates page, plus a notice: five rows are unplaceable on purpose, and hovering the notice
+   names each one and why. No second table, no relationship.
 6. **Put something on the page for the map to filter.** A table beside the map on at least one
    page - Origin, Destination and the thickness measure is enough. See below: this is what the
    first certification pass failed on.
